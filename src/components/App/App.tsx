@@ -23,6 +23,24 @@ export default function App() {
     setTodos((prevTodos) => [newTodo, ...prevTodos]);
   };
 
+  const handleToggle = (id: number) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      })
+    );
+  };
+
+  const handleDelete = (id: number) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <div className="container">
       <h1>Менеджер Завдань (Todo List)</h1>
@@ -30,7 +48,7 @@ export default function App() {
 
       {/* Тимчасове відображення для перевірки стану */}
       {/* <pre>{JSON.stringify(todos, null, 2)}</pre> */}
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onToggle={handleToggle} onDelete={handleDelete} />
     </div>
   );
 }
