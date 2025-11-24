@@ -20,7 +20,7 @@ export default function TodoForm({ onAdd }: TodoFormProps) {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="todo-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Нове завдання..."

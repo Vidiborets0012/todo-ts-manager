@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Todo } from "../../types/todo";
 import TodoForm from "../TodoForm.tsx/TodoForm";
+import TodoList from "../TodoList/TodoList";
 
 const initialTodos: Todo[] = [
   { id: 1, text: "Вивчити TypeScript", completed: true },
@@ -23,12 +24,13 @@ export default function App() {
   };
 
   return (
-    <>
+    <div className="container">
       <h1>Менеджер Завдань (Todo List)</h1>
       <TodoForm onAdd={handleAddTodo} />
 
       {/* Тимчасове відображення для перевірки стану */}
-      <pre>{JSON.stringify(todos, null, 2)}</pre>
-    </>
+      {/* <pre>{JSON.stringify(todos, null, 2)}</pre> */}
+      <TodoList todos={todos} />
+    </div>
   );
 }
